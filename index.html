@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sucursales</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: rgb(219, 186, 132);
+      font-family: Arial, sans-serif;
+    }
+    .tabs {
+      display: flex;
+      background-color: rgb(54, 169, 167);
+      border-bottom: 2px solid #000000;
+    }
+    .tab {
+      padding: 14px 20px;
+      cursor: pointer;
+      flex: 1;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+    .tab:hover {
+      background-color: #1d7683;
+    }
+    .tab.active {
+      background-color: rgba(255, 255, 255, 0.749);
+      font-weight: bold;
+      border-bottom: 3px solid rgb(255, 24, 24);
+    }
+    .content {
+      padding: 20px;
+    }
+    .sucursal-button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #ffffff;
+      border: 1px solid #000;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+    .sucursal-button:hover {
+      background-color: #2ef1ff;
+    }
+    .KFC{
+      display: flex;
+      justify-content: center;
+    }
+    .STARBUCKS{
+      display: flex;
+      justify-content: center;
+    }
+    .MCDONAL{
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="tabs">
+  <div class="tab active">Sucursales</div>
+</div>
+<h1> <a href="https://www.youtube.com/watch?v=MPD8wiNVPDU">PAGINA RECOMENDADA "LA CAPITAL" </a> </h1>
+<a href="https://www.youtube.com/watch?v=c_uxYAyOPc0">PAGINA RECOMENDADA "LUISITO COMUNICA"</a> 
+<div class="content" id="sucursalesContent">
+  <h2>Seleccione una sucursal:</h2>
+
+  <div class="sucursal-button" onclick="mostrarMenu('Sucursal 1')">SUCURSAL CENTRO</div>
+  <div class="KFC">
+    <img src="IMAGENES/SUCURSAL CENTRO.jpg", width="450">
+    
+  </div>
+  <div class="sucursal-button" onclick="mostrarMenu('Sucursal 2')">SUCURSAL NORTE</div>
+  <div class="STARBUCKS">
+    <img src="IMAGENES/SUCURSAL NORTE.jpg", width="450">
+  </div>
+  <div class="sucursal-button" onclick="mostrarMenu('Sucursal 3')">SUCURSAL SUR</div>
+  <div class="MCDONAL">
+    <img src="IMAGENES/SUCURSAL SUR.jpg", width="450">
+  </div>
+</div>
+
+<div class="content" id="menuContent" style="display: none;">
+  <h2 id="nombreSucursal"></h2>
+  <p>Bienvenido al menú de esta sucursal.</p>
+  <button onclick="volverSucursales()">Volver a Sucursales</button>
+</div>
+
+<script>
+  function mostrarMenu(nombre) {
+    document.getElementById('sucursalesContent').style.display = 'none';
+    document.getElementById('menuContent').style.display = 'block';
+
+    let menu = '';
+    if (nombre === 'Sucursal 1') {
+      menu = `
+        <h2 style="font-size:30px;">POLLITO CHICKEN</h2>
+        <ul style="font-size:20px;">
+          <li>Tacos al Pastor</li>
+          <li>Enchiladas verdes</li>
+          <li>Papas</li>
+        </ul>
+        <video width="400" controls>
+          <source src="vVIDEOS/TACO.mp4" type="video/mp4">
+          Tu navegador no soporta el video. 
+        </video>
+        <a href="https://www.directoalpaladar.com/videos-recetas/tacos-al-pastor-receta-cocina-mexicana-video">PAGINA DE TACOS</a>
+      `;
+    } else if (nombre === 'Sucursal 2') {
+      menu = `
+        <h2 style="font-size:30px;">EL ESTART BUCKS COFFE</h2>
+        <ul style="font-size:20px;">
+          <li>Spaghetti carbonara</li>
+          <li>Hamburguesa CLasica</li>
+          <li>Pad Thai</li>
+        </ul>
+        <video width="400" controls>
+          <source src="vVIDEOS/Pasta.mp4" type="video/mp4">
+        </video>
+        <a href="https://www.recipetineats.com/chicken-pad-thai/">PAGINA DE PAD THAI</a>
+      `;
+    } else if (nombre === 'Sucursal 3') {
+      menu = `
+        <h2 style="font-size:30px;">MK DONALS</h2>
+        <ul style="font-size:20px;">
+          <li>Suchi Roll de Salmon</li>
+          <li>Pizza MArgarita</li>
+          <li>Empanadas de carne</li>
+        </ul>
+        <video width="400" controls>
+          <source src="vVIDEOS/HAM.mp4" type="video/mp4">
+        </video>
+        <a href="https://tienda.sushiroll.mx/">PAGINA DE SUSHI</a>
+      `;
+    } else {
+      menu = `<h2>Menú no disponible</h2>`;
+    }
+
+    document.getElementById('menuContent').innerHTML = `
+      ${menu}
+      <br><br>
+      <button onclick="volverSucursales()">Volver a Sucursales</button>
+    `;
+  }
+
+  function volverSucursales() {
+    document.getElementById('menuContent').style.display = 'none';
+    document.getElementById('sucursalesContent').style.display = 'block';
+  }
+</script>
